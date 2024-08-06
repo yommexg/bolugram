@@ -1,13 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { Redirect } from 'expo-router'
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { Redirect } from "expo-router";
 
 const HomeScreen = () => {
-  return (
- <Redirect href={"/(home)/(tabs)"}/>
-  )
-}
+  return <Redirect href={"/(auth)/login"} />;
+};
 
-export default HomeScreen
+export default HomeScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

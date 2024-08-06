@@ -1,10 +1,13 @@
+import { useAuth } from "@/providers/AuthProvider";
 import ChatProvider from "@/providers/ChatProvider";
-import { Slot, Stack } from "expo-router";
-import { useEffect } from "react";
-import { StreamChat } from "stream-chat";
-import { Chat, OverlayProvider } from "stream-chat-expo";
+import { Redirect, Stack } from "expo-router";
 
 export default function HomeLayout() {
+  const { user } = useAuth();
+
+  if (!user) {
+    return <Redirect href="/(auth)/login" />;
+  }
   return (
     <ChatProvider>
       <Stack>
