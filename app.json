@@ -14,7 +14,8 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bitcode": false
+      "bitcode": false,
+      "bundleIdentifier": "com.yommexg.telegram"
     },
     "android": {
       "adaptiveIcon": {
