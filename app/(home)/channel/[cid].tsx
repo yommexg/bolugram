@@ -2,7 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useStreamVideoClient } from "@stream-io/video-react-native-sdk";
 import { router, Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, Text } from "react-native";
+import { ActivityIndicator, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Channel as ChannelType } from "stream-chat";
@@ -45,14 +45,15 @@ export default function ChannelScreen() {
       const call = videoClient.call("default", Crypto.randomUUID());
 
       await call.getOrCreate({
+        ring: true,
         data: {
           members: videoCallMembers,
         },
       });
+      // router.push(`/call/${call.id}`);
     }
 
     // Navigate to the call screen
-    router.push("/call");
   };
 
   if (!channel) {
@@ -73,7 +74,9 @@ export default function ChannelScreen() {
         options={{
           title: otherMemberNames[0],
           headerRight: () => (
-            <Ionicons name="call" size={20} color="gray" onPress={joinCall} />
+            <TouchableOpacity onPress={joinCall}>
+              <Ionicons name="call" size={20} color="gray" />
+            </TouchableOpacity>
           ),
         }}
       />
